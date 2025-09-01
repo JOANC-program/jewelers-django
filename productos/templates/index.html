@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %} Lista de Productos{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <a
+            name=""
+            id=""
+            class="btn btn-success"
+            href="{% url 'create' %}"
+            role="button"
+            >Agregar Nuevo Producto</a
+        >
+        
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Productos</h4>
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-primary"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Nombre Producto</th>
+                        <th scope="col">Descripcion del Producto</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">fecha Ingreso</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="">
+                        <td scope="row">Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>Item</td>
+                        <td>
+                            <a href="{% url 'edit' %}" class="btn btn-primary">Editar</a>
+                            <a href="#" class="btn btn-danger">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+{% endblock %}
