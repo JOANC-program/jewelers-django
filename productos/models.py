@@ -23,10 +23,12 @@ class Producto(models.Model):
     precioProducto = models.DecimalField(max_digits=10, decimal_places=2)
     fechaIngresoProducto = models.DateTimeField(auto_now_add=True)
     idEstadoProducto = models.ForeignKey(EstadoProducto, on_delete=models.CASCADE)
-    fotoProducto = models.ImageField(upload_to='uploads/fotos_productos/', null=True, blank=True)
+    fotoProducto = models.ImageField(upload_to='fotos_productos/', null=True, blank=True)
     def __str__(self):
         return f"{self.nombreProducto} ({self.idCategoria})"
-
+    def delete(self, using = None, keep_parents = False):
+        self.fotoProducto.storage.delete(self.fotoProducto.name)
+        return super().delete(using, keep_parents)
 
 
 class TipoMovimiento(models.Model):
