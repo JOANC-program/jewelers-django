@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block title %} Lista de empleados{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header">
+        <a
+            name=""
+            id=""
+            class="btn btn-success"
+            href="{% url 'create' %}"
+            role="button"
+            >Agregar nuevo empleado</a
+        >
+        
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Empleados</h4>
+        <div
+            class="table-responsive"
+        >
+            <table
+                class="table table-primary"
+            >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">ID Persona</th>
+                        <th scope="col">FechaNacimiento</th>
+                        <th scope="col">Genero</th>
+                        <th scope="col">Estado civil</th>
+                        <th scope="col">Nacionalidad</th>
+                        <th scope="col">Fecha contratación</th>
+                        <th scope="col">Tipo contrato</th>
+                        <th scope="col">Jornada laboral</th>
+                        <th scope="col">Salario</th>
+                        <th scope="col">EPS</th>
+                        <th scope="col">Grupo sanguineo</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Foto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados%}
+                    <tr>
+                        <td scope="row">{{empleado.id}}</td>
+                        <td>{{empleado.idPersona}}</td>
+                        <td>{{empleado.fechaNacimiento}}</td>
+                        <td>{{empleado.idGenero}}</td>
+                        <td>{{empleado.idEstadoCivil}}</td>
+                        <td>{{empleado.idNacionalidad}}</td>
+                        <td>{{empleado.fechaContratacion}}</td>
+                        <td>{{empleado.idTipoContrato}}</td>
+                        <td>{{empleado.idJornadaLaboral}}</td>
+                        <td>{{empleado.salarioEmpleado}}</td>
+                        <td>{{empleado.epsEmpleado}}</td>
+                        <td>{{empleado.idGrupoSanguineo}}</td>
+                        <td>{{empleado.idEstadoEmpleado}}</td>
+                        <td>
+                            {% if empleado.fotoEmpleado %}
+                                <img src="{{ empleado.fotoEmpleado.url }}" alt="Foto de {{ empleado.idPersona }}" width="50" height="50">
+                            {% else %}
+                                No hay foto
+                            {% endif %}
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="{% url 'edit' empleado.id %}">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'eliminar' empleado.id %}">Eliminar</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        
+    </div>
+    <div class="card-footer text-muted"></div>
+</div>
+
+{% endblock %}
