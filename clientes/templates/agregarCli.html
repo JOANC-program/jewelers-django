@@ -1,17 +1,17 @@
 {% extends 'layout.html' %} 
-{% block title %} Agregar Personas{% endblock %} 
+{% block title %} Agregar Clientes{% endblock %} 
 {%block content %}
 <div class="container">
   <form method="POST">
     {% csrf_token %}
     <div class="form-group">
       <div class="card">
-        <div class="card-header">Agregar Persona</div>
+        <div class="card-header">Agregar Clientes</div>
         <div class="card-body">{{ form }}</div>
       </div>
       <div class="card-footer">
         <button type="submit" class="btn btn-primary btn-sm">
-          Agregar Persona
+          Agregar Clientes
         </button>
       </div>
     </div>

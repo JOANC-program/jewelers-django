@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header">
+    <a class="btn btn-success" href="{% url 'clientes_agregar' %}"
+      >Añadir Cliente</a
+    >
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Clientes</h4>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+  {% for cliente in clientes %}
+  <tr>
+    <th scope="row">{{ cliente.id }}</th>
+    <td>{{ cliente.nombreCliente }}</td>
+    <td>{{ cliente.apellidoCliente }}</td>
+    <td>{{ cliente.numeroDocumentoCliente }}</td>
+    <td>{{ cliente.telefonoCliente }}</td>
+    <td>{{ cliente.emailCliente }}</td>
+    <td>{{ cliente.idEstado }}</td>
+    <td>
+      <a class="btn btn-danger btn-sm" href="{% url 'clientes_eliminar' cliente.id %}">Eliminar</a>
+      {% comment %} <a class="btn btn-primary btn-sm" href="{% url 'clientes_editar' cliente.id %}">Editar</a> {% endcomment %} {% endcomment %}
+    </td>
+  </tr>
+  {% endfor %}
+</tbody>
+<table>
+    </div>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>

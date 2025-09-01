@@ -6,7 +6,7 @@ from core.models import Estado
 
 class Cliente(models.Model):
     idPersona = models.ForeignKey(Persona, on_delete=models.CASCADE)
-    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE, default=1)
     fechaRegistroCliente = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"Cliente: {self.idPersona}"
