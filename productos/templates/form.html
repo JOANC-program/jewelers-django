@@ -1,69 +1,19 @@
-<form  enctype="multipart/form-data" method="post">
-    <div class="mb-3">
-        la
-        <label for="" class="form-label">Categoria: </label>
-        <input
-            type="text"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="categoria"
-        />
-        <label for="" class="form-label">Nombre del producto: </label>
-        <input
-            type="text"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="nombre"
-        />
-        <label for="" class="form-label">Descripcion: </label>
-        <input
-            type="text"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="descripcion"
-        />
-        <label for="" class="form-label">Stock: </label>
-        <input
-            type="number"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="stock"
-        />
-        <label for="" class="form-label">Precio: </label>
-        <input
-            type="number"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="precio"
-        />
-        <label for="" class="form-label">Estado del producto: </label>
-        <input
-            type="text"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="estado"
-        />
-        <label for="" class="form-label">Imagen del producto: </label>
-        <input
-            type="file"
-            class="form-control"
-            name=""
-            id=""
-            aria-describedby="helpId"
-            placeholder="imagen"
-        />
-    </div>
-    
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for campo in form %}
+        <div class="mb-3">
+            <label for="{{ campo.id_for_label }}" class="form-label">{{ campo.label }}</label>
+            {% if campo.field.widget.input_type == "file" %}
+                <br/>
+                {% if campo.value %}
+                    <img src="{{ campo.value.url }}" alt="Imagen actual" style="max-width: 200px; max-height: 200px;"/>
+                    <br/>
+                {% endif %}
+            {% endif %}
+            {{ campo }}
+            <div class="col-12 help-text">{{ campo.errors }}</div>
+        </div>
+    {% endfor %}
+    <input type="submit" class="btn btn-success" value="Guardar"/>
+    <a href="{% url 'index' %}" class="btn btn-primary">Cancelar</a>
 </form>

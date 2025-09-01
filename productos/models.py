@@ -16,14 +16,14 @@ class EstadoProducto(models.Model):
         return self.estadoProducto
 
 class Producto(models.Model):
-    idCategoria = models.ForeignKey(Categoria, on_delete=models.CASCADE)
-    nombreProducto = models.CharField(max_length=100)
-    descripcionProducto = models.CharField(max_length=200)
-    stockProducto = models.PositiveBigIntegerField()
-    precioProducto = models.DecimalField(max_digits=10, decimal_places=2)
-    fechaIngresoProducto = models.DateTimeField(auto_now_add=True)
-    idEstadoProducto = models.ForeignKey(EstadoProducto, on_delete=models.CASCADE)
-    fotoProducto = models.ImageField(upload_to='fotos_productos/', null=True, blank=True)
+    idCategoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, verbose_name="Categoria", )
+    nombreProducto = models.CharField(max_length=100, verbose_name="NombreProducto")
+    descripcionProducto = models.CharField(max_length=200, verbose_name="DescripcionProducto")
+    stockProducto = models.PositiveBigIntegerField( default=0, verbose_name="StockProducto")
+    precioProducto = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="PrecioProducto")
+    fechaIngresoProducto = models.DateTimeField(auto_now_add=True, verbose_name="FechaIngresoProducto")
+    idEstadoProducto = models.ForeignKey(EstadoProducto, on_delete=models.CASCADE, verbose_name="EstadoProducto")
+    fotoProducto = models.ImageField(upload_to='fotos_productos/', null=True, blank=True, verbose_name="FotoProducto")
     def __str__(self):
         return f"{self.nombreProducto} ({self.idCategoria})"
     def delete(self, using = None, keep_parents = False):
