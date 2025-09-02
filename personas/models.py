@@ -1,7 +1,5 @@
 from django.db import models
 from core.models import Estado
-estado_activo, created = Estado.objects.get_or_create(estado="Activo")
-print(estado_activo.id)
 
 # Create your models here.
 

@@ -7,7 +7,7 @@
             name=""
             id=""
             class="btn btn-success"
-            href="{% url 'createEmpleado' %}"
+            href="{% url 'empleado_create' %}"
             role="button"
             >Agregar nuevo empleado</a
         >
@@ -37,6 +37,7 @@
                         <th scope="col">Grupo sanguineo</th>
                         <th scope="col">Estado</th>
                         <th scope="col">Foto</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,8 +63,8 @@
                                 No hay foto
                             {% endif %}
                         <td>
-                            <a class="btn btn-primary btn-sm" href="{% url 'edit' empleado.id %}">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="{% url 'eliminar' empleado.id %}">Eliminar</a>
+                            <a class="btn btn-primary btn-sm" href="{% url 'edit_empleado' empleado.id %}">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="{% url 'delete_empleado' empleado.id %}">Eliminar</a>
                         </td>
                     </tr>
                     {% endfor %}

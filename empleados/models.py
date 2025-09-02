@@ -24,7 +24,6 @@ class GrupoSanguineo(models.Model):
 class Empleado(models.Model):
     idPersona = models.ForeignKey(Persona, on_delete=models.CASCADE)
     fechaNacimiento = models.DateField()
-    idGenero = models.ForeignKey(Genero, on_delete=models.CASCADE)
     idEstadoCivil = models.ForeignKey(EstadoCivil, on_delete=models.CASCADE)
     idNacionalidad = models.ForeignKey(Nacionalidad, on_delete=models.CASCADE)
     fechaContratacion = models.DateField()
