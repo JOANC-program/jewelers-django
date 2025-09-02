@@ -1,0 +1,60 @@
+{% extends 'layout.html' %} 
+{% block title %}Lista de Personas{% endblock %} 
+{%block content %}
+<div class="card">
+  <div class="card-header">
+    <a class="btn btn-success btn-sm" href="{% url 'personas_agregar' %}"
+      >Añadir persona</a
+    >
+  </div>
+  <div class="card-body">
+    <h4 class="card-title">Productos</h4>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Documento</th>
+            <th scope="col">Tipo de persona</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for persona in personas %}
+          <tr>
+            <th scope="row">{{ persona.id }}</th>
+            <td>{{ persona.nombrePersona }}</td>
+            <td>{{ persona.apellidoPersona }}</td>
+            <td>{{ persona.numeroDocumentoPersona }}</td>
+            <td>{{ persona.idTipoPersona }}</td>
+            <td>{{ persona.direccionPersona }}</td>
+            <td>{{ persona.telefonoPersona }}</td>
+            <td>{{ persona.emailPersona }}</td>
+            <td>{{ persona.idEstado }}</td>
+            <td>
+              <a
+                class="btn btn-danger btn-sm"
+                href="{% url 'personas_eliminar' persona.id %}"
+                >Eliminar</a
+              >
+              <a
+                class="btn btn-primary btn-sm"
+                href="{% url 'personas_editar' persona.id %}"
+                >Editar</a
+              >
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer text-muted"></div>
+</div>
+{% endblock %}

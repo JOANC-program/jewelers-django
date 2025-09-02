@@ -22,7 +22,7 @@ class EstadoCivil(models.Model):
     estadoCivil = models.CharField(max_length=50)
     def __str__(self):
         return self.estadoCivil
-
+    
 class Nacionalidad(models.Model):
     nacionalidad = models.CharField(max_length=100)
     def __str__(self):
@@ -37,7 +37,8 @@ class Persona(models.Model):
     direccionPersona = models.CharField(max_length=200)
     telefonoPersona = models.CharField(max_length=20)
     emailPersona = models.EmailField()
-    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE)
+    idGenero = models.ForeignKey(Genero, on_delete=models.CASCADE)
+    idEstado = models.ForeignKey(Estado, on_delete=models.CASCADE, default=1)
     registroPersona = models.DateTimeField(auto_now_add=True)
     def __str__(self):
         return f"{self.nombrePersona} {self.apellidoPersona} ({self.numeroDocumentoPersona})"
