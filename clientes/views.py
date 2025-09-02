@@ -31,7 +31,7 @@ def editarClientes(request, clientes_id):
             form.save()
             return redirect("clientes_home")
     else:
-        form = ClienteForm(intance=clientes)
+        form = ClienteForm(instance=clientes)
     context={"form":form}
     return render(request, "editarCli.html", context)
     

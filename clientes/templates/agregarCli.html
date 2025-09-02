@@ -1,5 +1,5 @@
-{% extends 'layout.html' %} 
-{% block title %} Agregar Clientes{% endblock %} 
+{% extends 'layout.html' %}
+{% block title %} Agregar Clientes{% endblock %}
 {%block content %}
 <div class="container">
   <form method="POST">
@@ -9,10 +9,11 @@
         <div class="card-header">Agregar Clientes</div>
         <div class="card-body">{{ form }}</div>
       </div>
-      <div class="card-footer">
+      <div class="card-footer"><br>
         <button type="submit" class="btn btn-primary btn-sm">
           Agregar Clientes
         </button>
+        <a class="btn btn-primary btn-sm" href="{% url 'personas_agregar' %}">Agregar nueva persona</a>
       </div>
     </div>
   </form>

@@ -50,6 +50,10 @@
               >
             </td>
           </tr>
+          {% empty %}
+          <tr>
+            <td colspan="8">No hay personas disponibles.</td>
+          </tr>
           {% endfor %}
         </tbody>
       </table>
